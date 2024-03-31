@@ -5,7 +5,7 @@ FROM python:3.9-slim
 WORKDIR /app
 
 # Se copia el archivo requirements.txt al directorio de trabajo
-COPY configs/python/requirements.txt .
+COPY ./configs/python/requirements.txt .
 
 # Instalar las dependencias necesarias
 RUN pip install --no-cache-dir -r requirements.txt
@@ -18,3 +18,5 @@ EXPOSE 8000
 
 # Comando para ejecutar la aplicación cuando el contenedor se inicia
 CMD ["python", "app.py"]
+
+
