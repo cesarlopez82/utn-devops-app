@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  python_api:
+    container_name: python_api
+  build:
+    context: .
+    dockerfile: Dockerfile    
+    volumes:
+      - "./configs/python/requirements.txt:/app/requirements.txt"
+      # - "./configs/python/app:/app" # Ruta del código fuente de la API
+    ports:
+      - "8081:8000"
+    networks:
+      - app-network
+    depends_on:
+      - db_server
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+  db_server:
+    image: mysql/mysql-server:8.0.23
+    container_name: mysql
+    environment:
+      - MYSQL_DATABASE=devops_app #creará una base de datos con ese nombre
+      - MYSQL_ROOT_PASSWORD=root #clave de administrador del servidor MySQL
+      - MYSQL_ROOT_HOST=%
+    ports:
+      - "4400:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - "./configs/mysql/script.sql:/tmp/script.sql"
+    networks:
+      - app-network
+volumes:
+  db_data:
+    driver: local
+networks:
+  app-network:
+    driver: bridge
