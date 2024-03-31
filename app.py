@@ -8,7 +8,7 @@ def home():
 
 @app.route('/test')
 def test():
-    return 'Este es el endpoint /test'
+    return 'Este es el endpoint /test modificado'
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000)
