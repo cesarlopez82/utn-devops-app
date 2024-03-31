@@ -11,7 +11,7 @@ COPY configs/python/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Se copia el código fuente de la aplicación al directorio de trabajo en el contenedor
-COPY ../app.py .
+COPY app.py .
 
 # Se expone el puerto 8000 (o el puerto que tu aplicación usa)
 EXPOSE 8000
