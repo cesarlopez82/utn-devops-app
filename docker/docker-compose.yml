@@ -2,9 +2,9 @@ version: '3.8'
 services:
   python_api:
     container_name: python_api
-  build:
-    context: .
-    dockerfile: Dockerfile    
+    build:
+      context: .
+      dockerfile: Dockerfile
     volumes:
       - "./configs/python/requirements.txt:/app/requirements.txt"
       # - "./configs/python/app:/app" # Ruta del código fuente de la API
