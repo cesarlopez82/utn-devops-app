@@ -1,40 +1,10 @@
-from flask import Flask, jsonify
-import mysql.connector
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
-# Configurar la conexión a la base de datos
-db_connection = mysql.connector.connect(
-    host="db_server",  # Nombre del contenedor de MySQL
-    port="4400",       # Puerto de MySQL
-    password="root",
-    database="devops_app"
-)
-db_cursor = db_connection.cursor()
-
 @app.route('/')
 def home():
-    return 'Bienvenido al home page!'
-
-@app.route('/test')
-def test():
-    return 'Este es el endpoint /test modificado'
-
-# Endpoint para consultar la base de datos y obtener el resultado como JSON
-@app.route('/prueba1')
-def prueba1():
-    query = "SELECT * FROM welcome WHERE description = 'prueba 1'"
-    db_cursor.execute(query)
-    result = db_cursor.fetchall()
-    return jsonify(result)
-
-# Endpoint para consultar la base de datos y obtener el resultado como JSON
-@app.route('/prueba2')
-def prueba2():
-    query = "SELECT * FROM welcome WHERE description = 'prueba 2'"
-    db_cursor.execute(query)
-    result = db_cursor.fetchall()
-    return jsonify(result)
+    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000)
