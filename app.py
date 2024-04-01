@@ -5,8 +5,8 @@ app = Flask(__name__)
 
 # Configurar la conexión a la base de datos
 db_connection = mysql.connector.connect(
-    host="db_server",
-    user="root",
+    host="db_server",  # Nombre del contenedor de MySQL
+    port="4400",       # Puerto de MySQL
     password="root",
     database="devops_app"
 )
