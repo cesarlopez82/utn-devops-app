@@ -12,6 +12,14 @@ db_connection = mysql.connector.connect(
 )
 db_cursor = db_connection.cursor()
 
+@app.route('/')
+def home():
+    return 'Bienvenido al home page!'
+
+@app.route('/test')
+def test():
+    return 'Este es el endpoint /test modificado'
+
 # Endpoint para consultar la base de datos y obtener el resultado como JSON
 @app.route('/prueba1')
 def prueba1():
