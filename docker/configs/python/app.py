@@ -8,11 +8,11 @@ app.template_folder = '/app'
 
 # Configuración de la base de datos
 db_config = {
-    'host': 'mysql_db',  # Nombre del servicio del contenedor MySQL en la red de Docker Compose
-    'port': '3306',
+    'host': 'host.docker.internal',  # Nombre del servicio del contenedor MySQL en la red de Docker Compose
+    'port': 4400,         # Puerto expuesto del contenedor MySQL
     'user': 'root',
     'password': 'root',
-    'database': 'devops_app'  # Conectar automáticamente a la base de datos devops_app
+    'database': 'devops_app'  # Nombre de la base de datos devops_app
 }
 
 def create_database(cursor, db_name):
@@ -36,13 +36,12 @@ def index():
 
         cursor.close()
         connection.close()
-
         return render_template('index.html', message=message)
     except Exception as e:
         return str(e)
+    
 
 @app.route('/welcome')
-
 def welcome():
     try:
         connection = mysql.connector.connect(**db_config)

@@ -12,10 +12,12 @@ services:
       - app-network
 
   mysql_db:
-    image: mysql:latest
+    build:
+      context: ./configs/mysql
+      dockerfile: Dockerfile
     container_name: mysql_db
     ports:
-      - "3306:3306"  # Puertos por defecto de MySQL
+      - "4400:3306"  # Puertos por defecto de MySQL
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: devops_app
