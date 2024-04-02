@@ -17,18 +17,12 @@ services:
       dockerfile: Dockerfile
     container_name: mysql_db
     ports:
-      - "4400:3306"  # Puertos por defecto de MySQL
+      - "4400:3306"  # Puertos por defecto de MySQL redirigido al 4400
+    volumes:
+      - db_data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: devops_app
-    networks:
-      - app-network
-      
-  nginx:
-    image: nginx
-    container_name: nginx
-    ports:
-      - "8222:80"
     networks:
       - app-network
 
