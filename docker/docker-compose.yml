@@ -26,6 +26,15 @@ services:
     networks:
       - app-network
 
+  unit_tests:
+    build:
+      context: ./configs/unit_tests
+      dockerfile: Dockerfile
+    container_name: unit_tests_python_api
+    
+    networks:
+      - app-network
+
 networks:
   app-network:
     driver: bridge

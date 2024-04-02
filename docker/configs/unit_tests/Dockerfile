@@ -13,9 +13,6 @@ COPY index.html /app
 # Instalar las dependencias
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Exponer el puerto 9000
-EXPOSE 9000
-
 # Comando para ejecutar la aplicación cuando se inicie el contenedor
 CMD ["python", "test_app.py"]
 
