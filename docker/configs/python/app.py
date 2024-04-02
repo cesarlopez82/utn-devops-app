@@ -9,7 +9,7 @@ app.template_folder = '/app'
 # Configuración de la base de datos
 db_config = {
     'host': 'mysql_db',  # Nombre del servicio del contenedor MySQL en la red de Docker Compose
-    'port': 4400,         # Puerto expuesto del contenedor MySQL
+    'port': 3306,         # Puerto expuesto del contenedor MySQL
     'user': 'root',
     'password': 'root',
     'database': 'devops_app'  # Nombre de la base de datos devops_app
