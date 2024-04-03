@@ -19,7 +19,7 @@ services:
     ports:
       - "4400:3306"  # Puertos por defecto de MySQL redirigido al 4400
     volumes:
-      - db_data:/var/lib/mysql
+      - /var/db/mysql:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: devops_app
@@ -34,7 +34,7 @@ services:
     
     networks:
       - app-network
-      
+
 volumes:
   db_data:
     driver: local
